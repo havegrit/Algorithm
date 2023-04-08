@@ -16,8 +16,6 @@ class Solution {
                 bin1 = "0" + bin1;
             }
         }
-        System.out.println("bin1 = " + bin1);
-        System.out.println("bin2 = " + bin2);
         for (int i = len-1; i >= 0; i--) {
             if (hasCarry) {
                 if (bin1.charAt(i) == '0') {
