@@ -1,15 +1,6 @@
 def solution(numbers):
-    answer = ""
-    dic = {"zero" : '0', "one" : '1', "two" : '2',
-           "three" : '3', "four" : '4', "five" : '5',
-           "six" : '6', "seven" : '7', "eight" : '8', "nine" : '9'}
-    listOfNumbers = list(numbers)
-    listOfNumbers.reverse()
-    numbers = []
-    while len(listOfNumbers) > 0:
-        numbers.append(listOfNumbers.pop())
-        if dic.get("".join(numbers)):
-            answer += dic.get("".join(numbers))
-            numbers.clear()
+    dic = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    for num, engNum in enumerate(dic):
+        numbers = numbers.replace(engNum, str(num))
 
-    return int(answer)
+    return int(numbers)
