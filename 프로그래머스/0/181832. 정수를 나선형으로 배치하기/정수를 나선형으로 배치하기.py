@@ -13,14 +13,11 @@ def solution(n):
     while(cnt <= n*n):
         answer[row][col] = cnt
         cnt += 1
-        if (d == 0 and col + 1 == n) or (d == 0 and answer[row][col+1] != 0):
+        
+        if row + dr[d] < 0 or row + dr[d] == n or col + dc[d] < 0 or col + dc[d] == n:
             d += 1
-        elif (d == 1 and row + 1 == n) or (d == 1 and answer[row+1][col] != 0):
-            d += 1
-        elif (d == 2 and col - 1 < 0) or (d == 2 and answer[row][col-1] != 0):
-            d += 1
-        elif (d == 3 and row - 1 < 0) or (d == 3 and answer[row-1][col] != 0):
-            d += 1
+        elif answer[row+dr[d]][col+dc[d]] != 0:
+            d +=1
             
         if d > 3:
             d = 0
