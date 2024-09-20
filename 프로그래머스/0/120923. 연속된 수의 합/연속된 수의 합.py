@@ -1,7 +1,7 @@
 def solution(num, total):
     answer = []
-    start = 50
-    end = 50 + num
+    start = 0
+    end = num
     
     while True:
         answer.clear()
