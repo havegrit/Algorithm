@@ -1,10 +1,10 @@
 def solution(video_len, pos, op_start, op_end, commands):
     answer = ''
     
-    pos = timeToSec(pos)
-    op_start = timeToSec(op_start)
-    op_end = timeToSec(op_end)
-    video_end = timeToSec(video_len)
+    pos = convertTime(pos)
+    op_start = convertTime(op_start)
+    op_end = convertTime(op_end)
+    video_end = convertTime(video_len)
     
     if pos > op_start and pos < op_end:
         pos = op_end
@@ -23,30 +23,24 @@ def solution(video_len, pos, op_start, op_end, commands):
         if pos >= op_start and pos < op_end:
             pos = op_end
     
-    answer = secToTime(pos)
+    answer = convertTime(pos)
 
     return answer
 
-def getMin(time):
-    return int(time[0:2])
-
-def getSec(time):
-    return int(time[3:5])
-
-def timeToSec(time):
-    return getMin(time) * 60 + getSec(time)
-
-def secToTime(sec):
-    minutes = sec // 60
-    sec = sec % 60
-    if minutes < 10:
-        minutes = "0" + str(minutes)
+def convertTime(time):
+    if isinstance(time, str):
+        time = time.split(":")
+        return int(time[0]) * 60 + int(time[1])
     else:
-        minutes = str(minutes)
-    if sec < 10:
-        sec = "0" + str(sec)
-    else:
-        sec = str(sec)
-        
-    return minutes + ":" + sec
-    
+        minutes = time // 60
+        time = time % 60
+        if minutes < 10:
+            minutes = "0" + str(minutes)
+        else:
+            minutes = str(minutes)
+        if time < 10:
+            time = "0" + str(time)
+        else:
+            time = str(time)
+            
+        return minutes + ":" + time
