@@ -9,7 +9,7 @@ p2 = n % p
 for size in sizes:
     t_order += size // t
     size = size % t
-    if size % t > 0:
+    if size > 0:
         t_order += 1
         
 print(t_order)
