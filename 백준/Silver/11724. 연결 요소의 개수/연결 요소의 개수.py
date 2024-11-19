@@ -1,16 +1,14 @@
 import sys
+sys.setrecursionlimit(10**4)
 input = sys.stdin.readline
 
-def DFS(start):
-    stack = [start]
-    while stack:
-        node = stack.pop()
-        if visited[node]:
-            continue
-        visited[node] = True
-        for adjNode in adjList[node]:
-            if not visited[adjNode]:
-                stack.append(adjNode)
+def DFS(node):
+    if visited[node]:
+        return
+    visited[node] = True
+    for adjNode in adjList[node]:
+        if not visited[adjNode]:
+            DFS(adjNode)
 
 n, m = map(int, input().split())
 visited = [False] * (n + 1)
