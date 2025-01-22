@@ -14,4 +14,4 @@ for i in range(l):
     sum += num_arr[i] * r
     r *= 31
 
-print(sum)
+print(sum % m)
