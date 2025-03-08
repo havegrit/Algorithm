@@ -1,36 +1,33 @@
-memberCnt = int(input())
-INF = float('inf')
-friendship = [[INF] * (memberCnt + 1) for _ in range(memberCnt + 1)]
+import sys
 
-for i in range(1, memberCnt + 1):
+m = int(sys.stdin.readline())
+INF = float('inf')
+friendship = [[INF for _ in range(m + 1)] for _ in range(m + 1)]
+
+for i in range(1, m + 1):
     friendship[i][i] = 0
 
 while True:
-    first, second = map(int, input().split())
-    if first == -1 and second == -1:
+    a, b = map(int, sys.stdin.readline().split())
+    if a == -1 and b == -1:
         break
-    friendship[first][second] = 1
-    friendship[second][first] = 1
+    friendship[a][b] = 1
+    friendship[b][a] = 1
 
-for i in range(1, memberCnt + 1):
-    for j in range(1, memberCnt + 1):
-        for k in range(1, memberCnt + 1):
+for i in range(1, m + 1):
+    for j in range(1, m + 1):
+        for k in range(1, m + 1):
             friendship[j][k] = min(friendship[j][k], friendship[j][i] + friendship[i][k])
 
 scores = []
-for i in range(1, memberCnt + 1):
+for i in range(1, m + 1):
     maxDist = 0
-    for j in range(1, memberCnt + 1):
-        if i != j:
-            maxDist = max(maxDist, friendship[i][j])
+    for j in range(1, m + 1):
+        maxDist = max(maxDist, friendship[i][j])
     scores.append(maxDist)
 
-candidate = []
 candidateScore = min(scores)
-
-for i in range(memberCnt):
-    if scores[i] == candidateScore:
-        candidate.append(i + 1)
+candidate = [i + 1 for i, score in enumerate(scores) if score == candidateScore]
 
 print(candidateScore, len(candidate))
-print(" ".join(map(str, candidate)))
+print(*candidate)
