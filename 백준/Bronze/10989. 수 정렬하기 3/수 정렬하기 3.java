@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 class Main {
-    private static int MAX_VALUE = 10001;
+    private static int MAX_NUMBER = 10000;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,19 +20,22 @@ class Main {
     }
 
     private static void countingSort(int[] list) throws IOException {
-        int[] countArray = new int[MAX_VALUE];
+        int[] countArray = new int[MAX_NUMBER + 1];
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.length; i++) {
             countArray[list[i]]++;
         }
 
-        for (int i = 0; i < MAX_VALUE; i++) {
+        for (int i = 0; i <= MAX_NUMBER; i++) {
             if (countArray[i] > 0) {
                 for (int j = 0; j < countArray[i]; j++) {
-                    bw.write(i + "\n");
+                    sb.append(i).append("\n");
                 }
             }
         }
+
+        bw.write(sb.toString());
         bw.close();
     }
 }
