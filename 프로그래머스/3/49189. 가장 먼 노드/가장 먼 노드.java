@@ -10,10 +10,8 @@ class Solution {
         }
         
         for (int[] e : edge) {
-            int s = e[0];
-            int t = e[1];
-            graph[s].add(t);
-            graph[t].add(s);
+            graph[e[0]].add(e[1]);
+            graph[e[1]].add(e[0]);
         }
         
         int[] dist = bfs(n, graph);
@@ -33,22 +31,22 @@ class Solution {
     private int[] bfs(int n, List<Integer>[] graph) {
         int[] dist = new int[n + 1];
         boolean[] visited = new boolean[n + 1];
-        Queue<Integer> q = new LinkedList<>();        
-        int start = 1;
-        q.offer(start);
-        visited[start] = true;
-        dist[start] = 0;
-        
-        while (!q.isEmpty()) {
-            int curr = q.poll();
+        Queue<Integer> queue = new ArrayDeque<>();
+
+        queue.offer(1);
+        visited[1] = true;
+        dist[1] = 0;
+
+        while (!queue.isEmpty()) {
+            int curr = queue.poll();
             for (int next : graph[curr]) {
                 if (!visited[next]) {
                     visited[next] = true;
                     dist[next] = dist[curr] + 1;
-                    q.offer(next);                 
+                    queue.offer(next);
                 }
             }
-        }        
+        }
         return dist;
     }
 }
