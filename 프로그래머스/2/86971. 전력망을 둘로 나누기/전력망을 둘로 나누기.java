@@ -1,45 +1,44 @@
-import java.util.*;
+import java.util.ArrayList;
 
 class Solution {
+    private boolean[] visited;
+    private ArrayList<Integer>[] graph;
+    private int N;
+    private int answer;
     public int solution(int n, int[][] wires) {
-        int answer = n;
+        N = n;
+        answer = n;
         
-        boolean[][] graph = new boolean[n + 1][n + 1];
-        
+        graph = new ArrayList[n + 1];
+        for (int i = 1; i <= n; i++) {
+            graph[i] = new ArrayList<>();
+        }
         for (int[] wire : wires) {
             int a = wire[0];
             int b = wire[1];
-            graph[a][b] = true;
-            graph[b][a] = true;
+            graph[a].add(b);
+            graph[b].add(a);
         }
         
-        for (int[] wire : wires) {
-            int a = wire[0];
-            int b = wire[1];
-            graph[a][b] = false;
-            graph[b][a] = false;
-            
-            boolean[] visited = new boolean[n + 1];
-            visited[1] = true;
-            Queue<Integer> queue = new ArrayDeque<>();
-            queue.add(1);
-            int cnt = 1;
-
-            while (!queue.isEmpty()) {
-                int node = queue.poll();
-                for (int i = 1; i <= n; i++) {
-                    if (graph[node][i] && !visited[i]) {
-                        visited[i] = true;
-                        queue.add(i);
-                        cnt++;
-                    }
-                }
-            }
-            answer = Math.min(answer, Math.abs(n - cnt * 2));
-            graph[a][b] = true;
-            graph[b][a] = true;
-        }
-                
+        visited = new boolean[n + 1];
+        dfs(1);
         return answer;
+    }
+    
+    private int dfs(int node) {
+        visited[node] = true;
+        int subtree = 1;
+    
+        for (int next : graph[node]) {
+            if (!visited[next]) {
+                visited[next] = true;
+                int childCnt = dfs(next);
+                
+                answer = Math.min(answer, Math.abs(N - 2 * childCnt));
+                subtree += childCnt;
+            }
+        }
+        
+        return subtree;
     }
 }
