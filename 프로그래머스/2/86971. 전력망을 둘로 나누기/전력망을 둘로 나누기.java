@@ -26,7 +26,6 @@ class Solution {
     }
     
     private int dfs(int node) {
-        visited[node] = true;
         int subtree = 1;
     
         for (int next : graph[node]) {
