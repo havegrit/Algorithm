@@ -1063,6 +1063,20 @@
   "status" : "SOLVED",
   "createdAt" : null
 }, {
+  "id" : "programmers:178871",
+  "number" : 178871,
+  "title" : " 달리기 경주",
+  "platform" : "PROGRAMMERS",
+  "type" : "STRING",
+  "level" : "1",
+  "url" : "https://school.programmers.co.kr/learn/courses/30/lessons/178871",
+  "repositoryPath" : "프로그래머스/1/178871. 달리기 경주",
+  "repositoryUrl" : "https://github.com/havegrit/Algorithm/blob/main/프로그래머스/1/178871. 달리기 경주",
+  "repositoryOwner" : "havegrit",
+  "repositoryName" : "Algorithm",
+  "status" : "SOLVED",
+  "createdAt" : null
+}, {
   "id" : "programmers:181832",
   "number" : 181832,
   "title" : " 정수를 나선형으로 배치하기",
@@ -2154,18 +2168,4 @@
   "repositoryName" : "Algorithm",
   "status" : "SOLVED",
   "createdAt" : null
-}, {
-  "id" : "programmers:178871",
-  "number" : 178871,
-  "title" : "달리기 경주",
-  "platform" : "PROGRAMMERS",
-  "type" : "OTHER",
-  "level" : "lv1",
-  "url" : "https://school.programmers.co.kr/learn/courses/30/lessons/178871?language=java#",
-  "repositoryPath" : null,
-  "repositoryUrl" : null,
-  "repositoryOwner" : null,
-  "repositoryName" : null,
-  "status" : "UNSOLVED",
-  "createdAt" : "2026-09-08"
 } ]
